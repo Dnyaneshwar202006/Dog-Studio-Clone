@@ -1,16 +1,17 @@
 import * as THREE from "three";
 import { useThree } from "@react-three/fiber";
-import {
-  useAnimations,
-  useGLTF,
-  useTexture,
-} from "@react-three/drei";
-import { useEffect } from "react";
+import { useAnimations, useGLTF, useTexture } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Dog = () => {
+  gsap.registerPlugin(useGSAP());
+  gsap.registerPlugin(ScrollTrigger);
+
   const model = useGLTF("/models/dog.drc.glb");
   useThree(({ camera, scene, gl }) => {
-    console.log(camera.position);
     camera.position.z = 0.55;
     gl.toneMapping = THREE.ReinhardToneMapping;
     gl.outputColorSpace = THREE.SRGBColorSpace;
@@ -23,7 +24,7 @@ const Dog = () => {
   //   textures.sampleMatCap.colorSpace = THREE.SRGBColorSpace;
   const [normalMap, sampleMatCap] = useTexture([
     "/dog_normals.jpg",
-    "/matcap/mat-2.png"
+    "/matcap/mat-2.png",
   ]).map((texture) => {
     texture.flipY = false;
     texture.colorSpace = THREE.SRGBColorSpace;
@@ -32,11 +33,11 @@ const Dog = () => {
   const [branchMap, branchNormalMap] = useTexture([
     "/branches_diffuse.jpeg",
     "/branches_normals.jpeg",
-  ]).map((texture)=>{
+  ]).map((texture) => {
     texture.flipY = true;
     texture.colorSpace = THREE.SRGBColorSpace;
     return texture;
-  })
+  });
   const { actions } = useAnimations(model.animations, model.scene);
   useEffect(() => {
     actions["Take 001"].play();
@@ -56,6 +57,37 @@ const Dog = () => {
       child.material = branchMaterial;
     }
   });
+
+  const dogModel = useRef(model);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#section-1",
+        endTrigger: "#section-3",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    tl
+    .to(dogModel.current.scene.position,{
+      z: "-=0.75",
+      y: "+=0.1"
+    })
+    .to(dogModel.current.scene.rotation,{
+      x:`+=${Math.PI/15}`
+    })
+    .to(dogModel.current.scene.rotation,{
+      y:`-=${Math.PI}`,
+    },"third")
+    .to(dogModel.current.scene.position,{
+      x: "-=0.5",
+      z: "+=0.6",
+      y: "-=0.05"
+    },"third") //tagged animations run together or share the same slice of time...
+  }, []);
+
   return (
     <>
       <primitive
