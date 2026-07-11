@@ -23,6 +23,20 @@ section{
     z-index: 2;
 }
 
+#canvas-elem::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url(/background-l-2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.3s linear;
+}
+
 #section-1{
 
     --gap: 5rem;
@@ -103,4 +117,90 @@ section{
         top: 28%;
         right: 12%;
     }
+}
+
+#section-2{
+    .titles{
+        display: flex;
+        flex-direction: column;
+        padding-left: 15rem;
+        margin-block: 10rem;
+
+        .title{
+            display: flex;
+            gap: 4rem;
+            opacity: 0.3;
+            padding-block: 2rem;
+            transition: all 0.3s linear;
+            cursor: pointer;
+
+            h1{
+                font-size: 4.5rem;
+                font-weight: 100;
+                line-height: 1;
+            }
+
+            small{
+                margin-top: 0.6rem;
+                font-size: 0.5rem;
+            }
+        }
+
+        .title:hover{
+            opacity: 1;
+        }
+    }
+}
+/* Iska matlab hai ki main is the closest parent of both section-2 aur canvas toh when section-2 ke title par hover hogaa ham canvas ke after portion ka background image change karenge */
+main:has(#section-2 .title:hover) #canvas-elem::after{ 
+    opacity: 0;
+}
+
+.images{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.3s linear;
+    }
+
+}
+
+main:has(#section-2 .title[img-title="tommorowland"]:hover) #tommorowland{
+    opacity: 1;
+    background-color: rgb(4, 7, 24);
+}
+main:has(#section-2 .title[img-title="navy-pier"]:hover) #navy-pier{
+    opacity: 1;
+    background-color: rgb(4, 7, 24);
+}
+main:has(#section-2 .title[img-title="msi-chicago"]:hover) #msi-chicago{
+    opacity: 1;
+    background-color: rgb(4, 7, 24);
+}
+main:has(#section-2 .title[img-title="phone"]:hover) #phone{
+    opacity: 1;
+    background-color: rgb(4, 7, 24);
+}
+main:has(#section-2 .title[img-title="kikk"]:hover) #kikk{
+    opacity: 1;
+    background-color: rgba(1, 15, 92, 0.679);
+}
+main:has(#section-2 .title[img-title="kennedy"]:hover) #kennedy{
+    opacity: 1;
+    background-color: rgb(4, 7, 24);
+}
+main:has(#section-2 .title[img-title="opera"]:hover) #opera{
+    opacity: 1;
+    background-color: rgb(176, 4, 4);
 }
