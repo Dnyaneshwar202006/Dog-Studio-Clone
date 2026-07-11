@@ -15,7 +15,8 @@ function App() {
           <img id="kennedy" src="/kennedy.png" alt="" />
           <img id="opera" src="/opera.png" alt="" />
         </div>
-        <Canvas id="tommorowland"
+        <Canvas
+          id="tommorowland"
           id="canvas-elem"
           style={{
             height: "100vh",
@@ -112,7 +113,37 @@ function App() {
             </div>
           </div>
         </section>
-        <section id="section-3"></section>
+        <section id="section-3">
+          <div className="top">
+            <div className="left">
+              <h3>
+                We're Crafting <br /> emotional <br /> experiences aimed <br />{" "}
+                at improving <br /> results
+              </h3>
+            </div>
+            <div className="right"></div>
+          </div>
+        </section>
+        <section id="section-4">
+          <div className="bottom">
+            <div className="left"></div>
+            <div className="right">
+              <p>
+                Dogstudio is a design & technology firm <br /> working globally
+                from our offices based in <br /> Belgium and Chicago. <br /> Our
+                strong focus on producing high quality & <br />
+                emotional brandings, digital products and <br /> experiences
+                became a signature.
+              </p>
+              <p>
+                We’re passionate about moving people and <br /> solving problems
+                for the likes of Microsoft, <br /> The Museum of Science And
+                Industry Of <br /> Chicago, The Kennedy Center of Washington,{" "}
+                <br /> Dragone, Quanta Magazine, and many more.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );

@@ -13,17 +13,17 @@ body,
     color: whitesmoke;
 }
 
-main{
+main {
     position: relative;
 }
 
-section{
+section {
     min-height: 100vh;
     position: relative;
     z-index: 2;
 }
 
-#canvas-elem::after{
+#canvas-elem::after {
     content: "";
     height: 100%;
     width: 100%;
@@ -37,78 +37,80 @@ section{
     transition: all 0.3s linear;
 }
 
-#section-1{
+#section-1 {
 
     --gap: 5rem;
     position: relative;
 
-    nav{
+    nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1.5rem 2.5rem;
         padding-top: 3.5rem;
 
-        .nav-elem:nth-child(2){
-            i{
+        .nav-elem:nth-child(2) {
+            i {
                 color: red;
             }
         }
 
-        svg{
-                max-width: 5rem;
-                width: 100%;
-                height: 100%;
-            }
+        svg {
+            max-width: 5rem;
+            width: 100%;
+            height: 100%;
+        }
     }
 
-    .middle{
+    .middle {
         display: flex;
         gap: var(--gap);
 
-        .left, .right{
+        .left,
+        .right {
             width: 50%;
         }
 
-        .left{
+        .left {
             display: flex;
             align-items: center;
             justify-content: flex-end;
             padding-block: 7rem;
         }
 
-        h1{
+        h1 {
             font-size: 5rem;
             line-height: 0.8;
             text-align: right;
         }
     }
 
-    .bottom{
+    .bottom {
         display: flex;
         gap: var(--gap);
 
-        .left, .right{
+        .left,
+        .right {
             width: 50%;
         }
 
-        .right{
-            p{
+        .right {
+            p {
                 font-weight: 200;
                 line-height: 1.5;
             }
         }
     }
 
-    .first-line{
+    .first-line {
         width: 35rem;
         background-color: rgba(255, 0, 0, 0.396);
         height: 1px;
         position: absolute;
-        transform: rotate(45deg) translate(0,-17rem);
+        transform: rotate(45deg) translate(0, -17rem);
     }
 
-    .second-line{
+    .second-line {
         width: 10rem;
         background-color: rgba(255, 0, 0, 0.396);
         height: 1px;
@@ -119,14 +121,14 @@ section{
     }
 }
 
-#section-2{
-    .titles{
+#section-2 {
+    .titles {
         display: flex;
         flex-direction: column;
         padding-left: 15rem;
         margin-block: 10rem;
 
-        .title{
+        .title {
             display: flex;
             gap: 4rem;
             opacity: 0.3;
@@ -134,36 +136,37 @@ section{
             transition: all 0.3s linear;
             cursor: pointer;
 
-            h1{
+            h1 {
                 font-size: 4.5rem;
                 font-weight: 100;
                 line-height: 1;
             }
 
-            small{
+            small {
                 margin-top: 0.6rem;
                 font-size: 0.5rem;
             }
         }
 
-        .title:hover{
+        .title:hover {
             opacity: 1;
         }
     }
 }
+
 /* Iska matlab hai ki main is the closest parent of both section-2 aur canvas toh when section-2 ke title par hover hogaa ham canvas ke after portion ka background image change karenge */
-main:has(#section-2 .title:hover) #canvas-elem::after{ 
+main:has(#section-2 .title:hover) #canvas-elem::after {
     opacity: 0;
 }
 
-.images{
+.images {
     position: fixed;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
 
-    img{
+    img {
         height: 100%;
         width: 100%;
         object-fit: cover;
@@ -176,31 +179,118 @@ main:has(#section-2 .title:hover) #canvas-elem::after{
 
 }
 
-main:has(#section-2 .title[img-title="tommorowland"]:hover) #tommorowland{
+main:has(#section-2 .title[img-title="tommorowland"]:hover) #tommorowland {
     opacity: 1;
     background-color: rgb(4, 7, 24);
 }
-main:has(#section-2 .title[img-title="navy-pier"]:hover) #navy-pier{
+
+main:has(#section-2 .title[img-title="navy-pier"]:hover) #navy-pier {
     opacity: 1;
     background-color: rgb(4, 7, 24);
 }
-main:has(#section-2 .title[img-title="msi-chicago"]:hover) #msi-chicago{
+
+main:has(#section-2 .title[img-title="msi-chicago"]:hover) #msi-chicago {
     opacity: 1;
     background-color: rgb(4, 7, 24);
 }
-main:has(#section-2 .title[img-title="phone"]:hover) #phone{
+
+main:has(#section-2 .title[img-title="phone"]:hover) #phone {
     opacity: 1;
     background-color: rgb(4, 7, 24);
 }
-main:has(#section-2 .title[img-title="kikk"]:hover) #kikk{
+
+main:has(#section-2 .title[img-title="kikk"]:hover) #kikk {
     opacity: 1;
     background-color: rgba(1, 15, 92, 0.679);
 }
-main:has(#section-2 .title[img-title="kennedy"]:hover) #kennedy{
+
+main:has(#section-2 .title[img-title="kennedy"]:hover) #kennedy {
     opacity: 1;
     background-color: rgb(4, 7, 24);
 }
-main:has(#section-2 .title[img-title="opera"]:hover) #opera{
+
+main:has(#section-2 .title[img-title="opera"]:hover) #opera {
     opacity: 1;
     background-color: rgb(176, 4, 4);
+}
+
+#section-3 {
+    padding-top: 10rem;
+    padding-inline: 10rem;
+    position: relative;
+    z-index: 0;
+    min-height: initial;
+
+    .top,
+    .bottom {
+        display: flex;
+        width: 100%;
+        gap: 10rem;
+    }
+
+    .left,
+    .right {
+        margin-top: 4.5rem;
+        width: 50%;
+        gap: 3rem;
+    }
+
+    .top .left {
+        padding-left: 5rem;
+
+        h3 {
+            font-size: 3rem;
+            font-weight: 100%;
+            opacity: 0.6;
+        }
+    }
+
+    .bottom .right {
+        display: flex;
+
+        p {
+            opacity: 0.5;
+            font-weight: 200;
+            font-size: 0.6rem;
+        }
+    }
+}
+
+#section-4 {
+    padding-inline: 10rem;
+    min-height: 50vh;
+
+    .top,
+    .bottom {
+        display: flex;
+        width: 100%;
+        gap: 10rem;
+    }
+
+    .left,
+    .right {
+        margin-top: 4.5rem;
+        width: 50%;
+        gap: 3rem;
+    }
+
+    .top .left {
+        padding-left: 5rem;
+
+        h3 {
+            font-size: 3rem;
+            font-weight: 100%;
+            opacity: 0.6;
+        }
+    }
+
+    .bottom .right {
+        display: flex;
+
+        p {
+            opacity: 0.5;
+            font-weight: 200;
+            font-size: 0.6rem;
+        }
+    }
 }
