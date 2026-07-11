@@ -96,7 +96,7 @@ const Dog = () => {
   });
   const branchMaterial = new THREE.MeshMatcapMaterial({
     normalMap: branchNormalMap,
-    map: branchMap,
+    matcap: mat2,
   });
 
   function onBeforeCompile(shader) {
@@ -132,6 +132,7 @@ const Dog = () => {
   }
 
   dogMaterial.onBeforeCompile = onBeforeCompile;
+  branchMaterial.onBeforeCompile = onBeforeCompile;
 
   model.scene.traverse((child) => {
     if (child.name.includes("DOG")) {
